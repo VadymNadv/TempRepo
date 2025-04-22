@@ -1,0 +1,39 @@
+{
+  "name": "hbs_only_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "postcss src/styles/main.css -o build/styles.css",
+    "build": "node scripts/build.js && npm run build:css",
+    "watch": "npm-watch",
+    "dev": "concurrently \"npm run watch\" \"live-server build --port=3000 --quiet\""
+  },
+  "watch": {
+    "build": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "hbs,css,js"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "autoprefixer": "^10.4.21",
+    "fs-extra": "^11.3.0",
+    "handlebars": "^4.7.8",
+    "html-minifier": "^4.0.0",
+    "postcss": "^8.5.3",
+    "postcss-cli": "^11.0.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "live-server": "^1.2.2",
+    "npm-watch": "^0.13.0",
+    "tailwindcss": "^3.4.1",
+    "watch": "^1.0.2"
+  }
+}
