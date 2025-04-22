@@ -15,3 +15,24 @@ jobs:
 
       - name: Install deps
         run: npm install
+
+      - name: Build Project
+        run: npm run build
+
+      - name: Archive build
+        run: |
+          mkdir -p .temp
+          tar -czf .temp/project-build.tar.gz build
+
+      - name: Upload files via SCP
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          source: .temp/project-build.tar.gz build
+          target: ~/htdocs/vadym1.swit.vn.ua
+          strip_components: 1
+
+      - name: Extract files
+
